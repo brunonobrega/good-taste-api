@@ -2,7 +2,7 @@ var express = require('express'),
   app = express(),
   port = process.env.PORT || 3000,
   mongoose = require('mongoose'),
-  Restaurant = require('./api/models/restaurantListModel'), //created model loading here
+  Restaurants = require('./api/models/restaurantListModel'), //created model loading here
   bodyParser = require('body-parser');
   
 // mongoose instance connection url connection
@@ -20,9 +20,9 @@ app.use(function(req, res, next) {
 });
 
 // Basic Middleware
-app.use(function(req, res) {
-  res.status(404).send({url: req.originalUrl + ' not found'})
-});
+// app.use(function(req, res) {
+//   res.status(404).send({url: req.originalUrl + ' not found'})
+// });
 
 var routes = require('./api/routes/restaurantListRoutes'); //importing route
 routes(app); //register the route

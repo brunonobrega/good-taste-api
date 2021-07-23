@@ -1,11 +1,13 @@
 var express = require('express'),
   app = express(),
-  port = process.env.PORT || 3000,
+  port = process.env.PORT || 3333,
   mongoose = require('mongoose'),
-  Restaurants = require('./api/models/restaurantListModel'), //created model loading here
+  // register models
+  Restaurants = require('./api/models/restaurantListModel'), 
+  Categories = require('./api/models/categoryModel'), 
   bodyParser = require('body-parser');
   
-// mongoose instance connection url connection
+// instance connection with mongodb
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/goodTastedb'); 
 
@@ -19,14 +21,9 @@ app.use(function(req, res, next) {
   next();
 });
 
-// Basic Middleware
-// app.use(function(req, res) {
-//   res.status(404).send({url: req.originalUrl + ' not found'})
-// });
-
-var routes = require('./api/routes/restaurantListRoutes'); //importing route
-routes(app); //register the route
+var routes = require('./api/routes/routes');
+routes(app);
 
 app.listen(port);
 
-console.log('Good Taste RESTful API server started on: ' + port);
+console.log('Good Taste API server started on: ' + port + ' port');

@@ -12,9 +12,7 @@ exports.list_all_restaurants = function(req, res) {
   });
 };
 
-
-
-
+// Create a new restaurant
 exports.create_a_restaurant = function(req, res) {
   var new_restaurant = new Restaurant(req.body);
   new_restaurant.save(function(err, restaurant) {
@@ -24,7 +22,7 @@ exports.create_a_restaurant = function(req, res) {
   });
 };
 
-
+// Show one restaurant by ID
 exports.read_a_restaurant = function(req, res) {
   Restaurant.findById(req.params.restaurantId, function(err, restaurant) {
     if (err)
@@ -33,7 +31,7 @@ exports.read_a_restaurant = function(req, res) {
   });
 };
 
-
+// Edit one restaurant by ID
 exports.update_a_restaurant = function(req, res) {
   Restaurant.findOneAndUpdate({_id: req.params.restaurantId}, req.body, {new: true}, function(err, restaurant) {
     if (err)
@@ -42,11 +40,11 @@ exports.update_a_restaurant = function(req, res) {
   });
 };
 
-
+// Delete one restaurant by ID
 exports.delete_a_restaurant = function(req, res) {
 
-
-  Restaurant.remove({
+  console.log(req.params.restaurantId);
+   Restaurant.remove({
     _id: req.params.restaurantId
   }, function(err, restaurant) {
     if (err)

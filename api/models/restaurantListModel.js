@@ -33,33 +33,6 @@ var RestaurantSchema = new Schema({
     price: Number,
   }],
 
-  /*
-  categories: {
-    type: [{
-      type: Number,
-    }]
-  }
-  
-  location: [{
-    latitude: { type: String },
-    longitude: { type: String },
-  }],
-  courier: {
-    avatar: { type: String },
-    name: { type: String },
-  },
-
-  categories: {
-    type: [Number]
-  },
-  
-  status: {
-    type: [{
-      type: String,
-      enum: ['pending', 'ongoing', ]
-    }]
-  }*/
-
 });
 
 module.exports = mongoose.model('Restaurants', RestaurantSchema);
